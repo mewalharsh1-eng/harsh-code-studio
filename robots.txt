@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mewalharsh1-eng.github.io/harsh-code-studio/sitemap.xml
