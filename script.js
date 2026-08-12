@@ -604,7 +604,7 @@ if (contactAction) {
             else if (selectedContact === "email") {
 
                 window.location.href =
-                    "mailto:harshcodestudio@gmail.com";
+                    "mailto:mewalharsh1@gmail.com";
 
             }
 
