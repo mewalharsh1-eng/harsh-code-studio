@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -34,11 +34,10 @@
     <link rel="stylesheet" href="style.css">
 
     <!-- Google Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 </head>
 
@@ -406,13 +405,15 @@
 
         </section>
 
-        <!-- project  -->
+        <!-- =========================================
+     PROJECTS SECTION
+========================================= -->
 
         <section class="projects" id="projects">
 
             <div class="container">
 
-
+                <!-- SECTION HEADER -->
                 <div class="section-title">
 
                     <span>Our Projects</span>
@@ -420,28 +421,63 @@
                     <h2>Some Things We Have Built</h2>
 
                     <p>
-                        A collection of modern websites and digital experiences created with clean design and
-                        technology.
+                        A collection of modern websites and digital experiences
+                        created with clean design, thoughtful UI and modern technology.
                     </p>
 
                 </div>
 
-                <div class="project-grid" id="projectGrid"></div>
 
-                <div class="admin-projects">
+                <!-- =========================================
+             PUBLIC PROJECTS
+        ========================================== -->
 
-                    <h3>Your Projects</h3>
+                <div class="project-showcase">
 
-                    <div id="adminProjectList">
-                        <p>Loading projects...</p>
+                    <div class="project-grid" id="projectGrid">
+
+                        <!-- Projects are loaded dynamically from Supabase -->
+
                     </div>
 
                 </div>
 
 
                 <!-- =========================================
-     DELETE CONFIRMATION MODAL
-========================================= -->
+             ADMIN PROJECTS
+        ========================================== -->
+
+                <div class="admin-projects">
+
+                    <div class="admin-projects-header">
+
+                        <div>
+                            <span class="admin-projects-label">
+                                ADMIN PANEL
+                            </span>
+
+                            <h3>Your Projects</h3>
+
+                            <p>
+                                Manage your portfolio projects from here.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div id="adminProjectList">
+
+                        <p>Loading projects...</p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+             DELETE CONFIRMATION MODAL
+        ========================================== -->
 
                 <div class="delete-modal" id="deleteModal">
 
@@ -474,10 +510,12 @@
 
                 </div>
 
-
-
-
             </div>
+
+        </section>
+
+
+        </div>
 
         </section>
 
@@ -1193,7 +1231,7 @@
                     <h3>Contact</h3>
 
 
-                    <a href="mailto:mewalharsh1@gmail.com">
+                    <a href="mailto:harshcodestudio@gmail.com">
                         Email Us
                     </a>
 
@@ -1381,7 +1419,7 @@
 
                 <div class="input-group">
                     <label for="profileEmail">Email</label>
-                    <input type="email" id="profileEmail" placeholder="Your email" disabled>
+                    <input type="email" id="profileEmail" placeholder="Your email">
                 </div>
 
                 <button type="button" id="saveProfileSettings" class="admin-submit">
