@@ -1,4 +1,4 @@
-// =========================================
+ // =========================================
 // HARSH CODE STUDIO
 // MAIN JAVASCRIPT
 // =========================================
@@ -604,7 +604,7 @@ if (contactAction) {
             else if (selectedContact === "email") {
 
                 window.location.href =
-                    "mailto:mewalharsh1@gmail.com";
+                    "mailto:harshcodestudio@gmail.com";
 
             }
 
@@ -920,7 +920,7 @@ async function fetchProjects() {
 }
 
 
-// =========================================
+ // =========================================
 // PUBLIC PROJECTS
 // =========================================
 
@@ -929,11 +929,9 @@ async function loadProjects() {
     const projectGrid =
         document.getElementById("projectGrid");
 
-
     if (!projectGrid) {
         return;
     }
-
 
     projectGrid.innerHTML = `
         <p style="text-align:center;width:100%;">
@@ -941,10 +939,7 @@ async function loadProjects() {
         </p>
     `;
 
-
-    const data =
-        await fetchProjects();
-
+    const data = await fetchProjects();
 
     if (!data.length) {
 
@@ -955,74 +950,150 @@ async function loadProjects() {
         `;
 
         return;
-
     }
 
-
     projectGrid.innerHTML = "";
-
 
     data.forEach((project, index) => {
 
         const card =
             document.createElement("div");
 
+        card.className = "project-card";
 
-        card.className =
-            "project-card";
+        // -----------------------------------------
+        // TECHNOLOGIES
+        // -----------------------------------------
+
+        const technologies =
+            project.technologies
+                ? project.technologies
+                    .split(/[,•|]/)
+                    .map(tech => tech.trim())
+                    .filter(Boolean)
+                : [];
+
+        const technologyHTML =
+            technologies.length
+                ? technologies.map(tech => `
+                    <span class="project-tech">
+                        ${tech}
+                    </span>
+                `).join("")
+                : `
+                    <span class="project-tech">
+                        Web Development
+                    </span>
+                `;
 
 
-        card.innerHTML = `
+        // -----------------------------------------
+        // IMAGE
+        // -----------------------------------------
 
-            <div class="project-image">
-
-                ${project.image_url
+        const imageHTML =
+            project.image_url
                 ? `
+                    <div class="project-image">
                         <img
                             src="${project.image_url}"
                             alt="${project.title || "Project"}"
+                            loading="lazy"
                         >
-                    `
+
+                        <div class="project-image-overlay">
+                            <span>
+                                PROJECT ${String(index + 1).padStart(2, "0")}
+                            </span>
+                        </div>
+                    </div>
+                `
                 : `
+                    <div class="project-image project-image-empty">
+
                         <div class="project-number">
                             PROJECT ${String(index + 1).padStart(2, "0")}
                         </div>
-                    `
-            }
 
-            </div>
+                    </div>
+                `;
 
+
+        // -----------------------------------------
+        // LIVE DEMO
+        // -----------------------------------------
+
+        const liveDemoHTML =
+            project.project_url
+                ? `
+                    <a
+                        href="${project.project_url}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link project-live-btn"
+                    >
+                        Live Demo
+                        <span>↗</span>
+                    </a>
+                `
+                : "";
+
+
+        // -----------------------------------------
+        // SOURCE CODE
+        // -----------------------------------------
+
+        const sourceCodeHTML =
+            project.github_url
+                ? `
+                    <a
+                        href="${project.github_url}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link project-github-btn"
+                    >
+                        Source Code
+                        <span>↗</span>
+                    </a>
+                `
+                : "";
+
+
+        // -----------------------------------------
+        // CARD
+        // -----------------------------------------
+
+        card.innerHTML = `
+
+            ${imageHTML}
 
             <div class="project-content">
+
+                <div class="project-card-number">
+                    PROJECT ${String(index + 1).padStart(2, "0")}
+                </div>
 
                 <h3>
                     ${project.title || "Untitled Project"}
                 </h3>
 
-
                 <p>
-                    ${project.description || ""}
+                    ${project.description || "A modern digital experience built with clean design and technology."}
                 </p>
 
 
-                <span>
-                    ${project.technologies || ""}
-                </span>
+                <div class="project-technologies">
+                    ${technologyHTML}
+                </div>
 
 
-                ${project.project_url
-                ? `
-                        <a
-                            href="${project.project_url}"
-                            target="_blank"
-                            rel="noopener"
-                            class="project-link"
-                        >
-                            View Project →
-                        </a>
-                    `
-                : ""
-            }
+                <div class="project-actions">
+
+                    ${liveDemoHTML}
+
+                    ${sourceCodeHTML}
+
+                </div>
 
             </div>
 
